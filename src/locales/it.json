@@ -1,0 +1,14 @@
+{
+    "columns": {
+      "name": "Nome",
+      "surname": "Cognome",
+      "fiscal_code": "Codice Fiscale",
+      "idcontrattodigitale": "ID Contratto",
+      "datainserimento": "Data Inserimento",
+      "statolavorazione": "Stato Lavorazione",
+      "tipologiacliente": "Tipo Cliente",
+      "referenteamm_email": "Email Referente",
+      "referenteamm_cell": "Cell Referente"
+    }
+  }
+  
