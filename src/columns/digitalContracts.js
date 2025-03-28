@@ -26,6 +26,14 @@ export const digitalContractsColumns = (t) => [
     },
   },
   {
+    field: "contract_data.salesman",
+    headerName: t("Agente"),
+    filterParams: {
+      filterOptions: ["equals", "contains"],
+      maxNumConditions: 0,
+    },
+  },
+  {
     field: "status",
     headerName: t("Stato"),
     filter: false,
