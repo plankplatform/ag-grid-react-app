@@ -1,6 +1,7 @@
 import React, { useRef, useMemo } from "react"
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react"
+import { myTheme } from "../styles/agTheme"
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -14,7 +15,7 @@ const DataGrid = ({
   const gridRef = useRef()
 
   return (
-    <div className="ag-material" style={{ height: '800px', width: '100%' }}>
+    <div style={{ height: '800px', width: '100%' }}>
       <AgGridReact
         ref={gridRef}
         columnDefs={columnDefs}
@@ -26,6 +27,7 @@ const DataGrid = ({
         cacheOverflowSize={2}
         maxBlocksInCache={5}
         datasource={datasource}
+        theme={myTheme}
       />
     </div>
   )
