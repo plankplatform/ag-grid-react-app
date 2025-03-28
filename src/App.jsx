@@ -9,7 +9,7 @@ const App = () => {
   return (
     <Router>
       <div style={{ display: "flex", justifyContent: "space-between", padding: "1rem" }}>
-        <h1>Contratti Digitali</h1>
+        <h1 className="text-3xl font-bold">Contratti Digitali</h1>
         {token ? (
           <button onClick={logout}>Logout</button>
         ) : (
