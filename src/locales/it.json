@@ -1,14 +1,12 @@
 {
-    "columns": {
-      "name": "Nome",
-      "surname": "Cognome",
-      "fiscal_code": "Codice Fiscale",
-      "idcontrattodigitale": "ID Contratto",
-      "datainserimento": "Data Inserimento",
-      "statolavorazione": "Stato Lavorazione",
-      "tipologiacliente": "Tipo Cliente",
-      "referenteamm_email": "Email Referente",
-      "referenteamm_cell": "Cell Referente"
-    }
+  "columns": {
+    "beneficiary_user": "Utente beneficiario",
+    "first_name": "Nome",
+    "last_name": "Cognome",
+    "fiscal_code": "Codice fiscale",
+    "signing_date": "Data stipula",
+    "customer_type": "Tipo cliente",
+    "email": "Email Referente",
+    "phone": "Telefono Referente"
   }
-  
+}
