@@ -15,25 +15,24 @@ const AG_GRID_OPERATOR_MAP = {
   notBlank: 'not_null'
 }
 
-export const makeDatasource = ({ url, fieldMap }) => ({
+export const makeDatasource = ({ url }) => ({
   getRows: async (params) => {
     const { startRow, endRow, sortModel, filterModel } = params
     const limit = endRow - startRow
     const offset = startRow
 
     const sort = sortModel
-      .map(s => `${fieldMap[s.colId] || s.colId}:${s.sort}`)
+      .map(s => `${s.colId}:${s.sort}`)
       .join(",")
 
     const filter = Object.entries(filterModel)
       .flatMap(([field, conf]) => {
-        const realField = fieldMap[field] || field
         const operator = AG_GRID_OPERATOR_MAP[conf.type] ?? ''
         const value = encodeURIComponent(conf.filter ?? true)
 
         const key = operator
-          ? `filter[${realField}][${operator}]`
-          : `filter[${realField}]`
+          ? `filter[${field}][${operator}]`
+          : `filter[${field}]`
 
         return [`${key}=${value}`]
       })

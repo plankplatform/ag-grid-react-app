@@ -22,14 +22,7 @@ const DigitalContracts = () => {
     if (!token) return null
 
     return makeDatasource({
-      url: `${baseUrl}/v1/digitalContracts`,
-      fieldMap: {
-        "customer_data.first_name": "name",
-        "customer_data.last_name": "surname",
-        "customer_data.company_name": "company_name",
-        "contract_data.beneficiary_user": "beneficiary_user",
-        "contract_data.salesman": "salesman"
-      }
+      url: `${baseUrl}/v1/digitalContracts`
     })
   }, [baseUrl, token])
 
