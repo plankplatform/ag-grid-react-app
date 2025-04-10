@@ -1,5 +1,9 @@
 export const invoicesColumns = (t) => [
     {
+        field: "invoice_id",
+        headerName: t("ID"),
+    },
+    {
       field: "company_name",
       headerName: t("Den. Sociale"),
       filter: "agTextColumnFilter",

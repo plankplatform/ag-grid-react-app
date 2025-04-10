@@ -14,7 +14,7 @@ export const digitalContractsColumns = (t) => [
     },
   },
   {
-    field: "salesman",
+    field: "agent",
     headerName: t("Agente"),
     filterParams: {
       filterOptions: ["equals", "contains"],
