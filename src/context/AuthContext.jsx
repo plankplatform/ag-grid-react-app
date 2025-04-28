@@ -1,40 +1,34 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import api from '../lib/axios'
 
 const AuthContext = createContext(null)
 
-export function AuthProvider({ children }) {
-  const [token, setToken] = useState(localStorage.getItem('token'))
-  const [loading, setLoading] = useState(false)
-
-  const login = async () => {
-    setLoading(true)
-    try {
-      const apiKey = import.meta.env.VITE_API_KEY
-      const response = await api.post('/v1/auth/login', { apikey: apiKey })
-      const newToken = response.data.jwt
-      localStorage.setItem('token', newToken)
-      setToken(newToken)
-    } catch (err) {
-      console.error("Login fallita", err)
-      setToken(null)
-    } finally {
-      setLoading(false)
+function getTokenFromCookie() {
+  const cookies = document.cookie.split(';').map(cookie => cookie.trim())
+  for (const cookie of cookies) {
+    if (cookie.startsWith('api_token=')) {
+      return cookie.substring('api_token='.length)
     }
   }
+  return null
+}
+
+export function AuthProvider({ children }) {
+  const [token, setToken] = useState(null)
+
+  useEffect(() => {
+    const tokenFromCookie = getTokenFromCookie()
+    if (tokenFromCookie) {
+      setToken(tokenFromCookie)
+    }
+  }, [])
 
   const logout = () => {
-    localStorage.removeItem('token')
+    document.cookie = "api_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
     setToken(null)
   }
 
-  useEffect(() => {
-    const stored = localStorage.getItem('token')
-    if (stored) setToken(stored)
-  }, [])
-
   return (
-    <AuthContext.Provider value={{ token, login, logout, loading }}>
+    <AuthContext.Provider value={{ token, logout }}>
       {children}
     </AuthContext.Provider>
   )

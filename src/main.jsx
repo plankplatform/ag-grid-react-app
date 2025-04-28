@@ -5,7 +5,8 @@ import App from "./App.jsx";
 import "./i18n";
 import { AuthProvider } from "./context/AuthContext"
 
-createRoot(document.getElementById("root")).render(
+const rootId = window.REACT_APP_ROOT_ID || 'root';
+createRoot(document.getElementById(rootId)).render(
   <StrictMode>
     <AuthProvider>
       <App />
